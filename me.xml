@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE student PUBLIC "-//Portland State University//DTD CS410J Grade Book//EN" "http://www.cs.pdx.edu/~whitlock/dtds/gradebook.dtd">
+<student enrolled-section="undergraduate">
+<id>amaddix</id>
+<firstName>Ashley</firstName>
+<lastName>Maddix</lastName>
+<email>amaddix@pdx.edu</email>
+<major>B.S. in Computer Science</major>
+<notes>
+<note>Ashley Maddix would like to learn I've only used Java casually for small programs in class, but Im not super confident in it compared to c++. So it would be nice to understand another language on that level.</note>
+<note>Ashley Maddix has these comments: nothing I can think of</note>
+</notes>
+</student>
