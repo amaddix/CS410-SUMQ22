@@ -1,11 +1,9 @@
 package edu.pdx.cs410J.amaddix;
 
+import edu.pdx.cs410J.ParserException;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,31 +29,124 @@ class Project1Test {
    */
   @Test
   void testprojconstructor(){
-    Project1 tproj = new Project1();
+    Project2 tproj = new Project2();
     PhoneBill tbill = new PhoneBill();
     assertThat(null, equalTo(tbill.getCustomer()));
 
   }
+  /*
+  @Test
+  void testFiles(){
+    String stArray[] = new String[7];
+    stArray[0] = "Ashley";
+    stArray[1] = "9584758564";
+    stArray[2] = "8577689786";
+    stArray[3] = "04/28/2022";
+    stArray[4] = "01:28";
+    stArray[5] = "04/28/2022";
+    stArray[6] = " 01:45";
+
+    String start = "04/28/2022 01:28";
+    String end = "04/28/2022 01:45";
+    Project1 tproj = new Project1(stArray[0], stArray[1], stArray[2], start, end);
+    try {
+      File tfile = new File(filename);
+      if (tfile.exists()) {
+        System.out.println("we have a file!");
+      }
+      else {
+        tfile.createNewFile();
+      }
+
+      PhoneBill bill = tproj.fileManager(filename);
+
+
+    }*/
 
   @Test
-  void testingProject1Correct() {
-    String tname="Ashley";
-    String tcaller= "9584758564";
-    String tcallee ="8577689786";
-    Project1 tproj= new Project1(tname, tcaller, tcallee);
+  void testfileManager() throws FileNotFoundException, UnsupportedEncodingException, ParserException {
+    String stArray[] = new String[7];
+    stArray[0] = "Ashley";
+    stArray[1] = "9584758564";
+    stArray[2] = "8577689786";
+    stArray[3] = "04/28/2022";
+    stArray[4] = "01:28";
+    stArray[5] = "04/28/2022";
+    stArray[6] = " 01:45";
+
+    String start = "04/28/2022 01:28";
+    String end = "04/28/2022 01:45";
+    Project2 tproj = new Project2(stArray[0], stArray[1], stArray[2], start, end);
+    PhoneBill tbill = tproj.fileManager(2, "newTextFile.txt");
+    assertThat(tbill.getCustomer(), equalTo(stArray[0]));
+  }
+
+  @Test
+  void testfileManager2() throws FileNotFoundException, UnsupportedEncodingException, ParserException {
+    String stArray[] = new String[7];
+    stArray[0] = "Ashley";
+    stArray[1] = "9584758564";
+    stArray[2] = "8577689786";
+    stArray[3] = "04/28/2022";
+    stArray[4] = "01:28";
+    stArray[5] = "04/28/2022";
+    stArray[6] = " 01:45";
+
+    String start = "04/28/2022 01:28";
+    String end = "04/28/2022 01:45";
+    Project2 tproj = new Project2(stArray[0], stArray[1], stArray[2], start, end);
+    PhoneBill tbill = tproj.fileManager(1, null);
+   assertThat(tbill.getCustomer(), equalTo(null));
+    //assertThat(result.getTextWrittenToStandardError(), containsString("Start time invalid"));
+  }
+
+  @Test
+  void testDisplay() {
+    String stArray[] = new String[7];
+    stArray[0] = "Ashley";
+    stArray[1] = "9584758564";
+    stArray[2] = "8577689786";
+    stArray[3] = "04/28/2022";
+    stArray[4] = "01:28";
+    stArray[5] = "04/28/2022";
+    stArray[6] = " 01:45";
+
+    String start = "04/28/2022 01:28";
+    String end = "04/28/2022 01:45";
+    Project2 tproj = new Project2(stArray[0], stArray[1], stArray[2], start, end);
+    assertThat(tproj.display(), equalTo(1));
+
+  }
+  @Test
+  void testingProject2Correct() {
+    String stArray[] = new String[7];
+    stArray[0]="Ashley";
+    stArray[1]= "9584758564";
+    stArray[2] ="8577689786";
+    stArray[3] = "04/28/2022";
+    stArray[4] = "01:28";
+    stArray[5] = "04/28/2022" ;
+    stArray[6]= " 01:45";
+
+    String start = "04/28/2022 01:28";
+    String end = "04/28/2022 01:45";
+    Project2 tproj= new Project2(stArray[0], stArray[1], stArray[2], start, end);
 
     //assertThat(tproj.validName(tname) , equalsTo(true));
-    assertThat(tproj.isValidPhoneNumber(tcaller) , equalTo(true));
-    assertThat(tproj.isValidPhoneNumber(tcallee) , equalTo(true));
+    assertThat(tproj.isValidPhoneNumber(stArray[1]) , equalTo(true));
+    assertThat(tproj.isValidPhoneNumber(stArray[2]) , equalTo(true));
+    assertThat(tproj.checkArgs(0, stArray) , equalTo(1));
     //assertThat(tproj.display(), containsString("Customer  :   " + tname + "Caller : " + tcaller + "    Callee :  " + tcallee));
   }
 
   @Test
-  void testingProject1Incorrect(){
+  void testingProject2Incorrect(){
     String tname="Ash%^^&%&^%&^%123";
     String tcaller= "9sdfs324frd";
     String tcallee ="857768978645354353";
-    Project1 tproj= new Project1(tname, tcaller, tcallee);
+    String tstart = "04/28/2022 01:28";
+    String tend = "04/28/2022 01:45";
+    Project2 tproj= new Project2(tname, tcaller, tcallee, tstart, tend);
 
     //assertThat(tproj.validName(tname) , equalsTo(false));
     assertThat(tproj.isValidPhoneNumber(tcaller) , equalTo(false));
@@ -66,7 +157,7 @@ class Project1Test {
   @Test
   void readmeCanBeReadAsResource() throws IOException {
     try (
-      InputStream readme = Project1.class.getResourceAsStream("README.txt")
+      InputStream readme = Project2.class.getResourceAsStream("README.txt")
     ) {
       assertThat(readme, not(nullValue()));
       BufferedReader reader = new BufferedReader(new InputStreamReader(readme));
