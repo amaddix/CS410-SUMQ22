@@ -29,8 +29,10 @@ public class Project2 {
    * Project constructor to initalize bill list to null
    */
   public Project2() {
-    this.customerBill = new PhoneBill();
-    this.billList = null;
+//    this.customerBill = new PhoneBill();
+ //   this.billList = null;
+//    Project2 temp = new Project2();
+    super();
   }
 
   /**
@@ -43,16 +45,22 @@ public class Project2 {
    *
    */
 
+   
+
   public Project2(String tname, String tcaller, String tcallee, String tstart, String tend) {
-    this.customerBill = new PhoneBill(tname, tcaller, tcallee, tstart, tend);
+   this.customerBill = new PhoneBill(tname, tcaller, tcallee, tstart, tend);
     this.billList = null;
+//    Project2 temp = new Project2(tname,tcaller,tcallee,tstart, tend);
+//    super.Project2(tname, tcaller, tcallee, tstart, tend);
   }
+  
 
   /**
    * Takes a string that should be a customer phone number, and verifies that it matches that format.
    * @param phoneNumber
    * @return true if string matches phone number, false otherwise
    */
+
 
   @VisibleForTesting
   static boolean isValidPhoneNumber(String phoneNumber) {
