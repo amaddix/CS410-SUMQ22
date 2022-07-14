@@ -14,7 +14,7 @@ public class Project1 {
   }
 
   public Project1(String tname, String tcaller, String tcallee){
-    this.customerBill= new PhoneBill(tname, tcaller, tcallee);
+    this.customerBill= new PhoneBill(tname, tcaller, tcallee, null, null);
   }
 
   @VisibleForTesting

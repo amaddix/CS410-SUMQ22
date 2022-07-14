@@ -41,6 +41,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     this.callNum=0;
   }
 
+
   /**
    * constructor initializing with all variables in a phone bill
    * @param customer
