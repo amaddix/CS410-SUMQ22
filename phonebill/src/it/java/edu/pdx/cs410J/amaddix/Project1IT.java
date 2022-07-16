@@ -78,11 +78,25 @@ class Project2IT extends InvokeMainTestCase {
     @Test
     void testWithNoTime() {
         MainMethodResult result = invokeMain("Ashley", "4453577734", "9797876784");
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 088576c49fa6548c26face59ddcf031a237ca72c
         assertThat(result.getTextWrittenToStandardError(), containsString("End time invalid"));
 
     }*/
 /*
     @Test
+<<<<<<< HEAD
+=======
+=======
+        assertThat(result.getTextWrittenToStandardError(), containsString("No start and/or end call time for phone call- will be saved as '0'"));
+
+    }*/
+
+   /* @Test
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
+>>>>>>> 088576c49fa6548c26face59ddcf031a237ca72c
     void testWithNoNUm() {
         MainMethodResult result = invokeMain("Ashley");
         assertThat(result.getTextWrittenToStandardError(), containsString("No Caller or Callee numbers - No Phone call recored"));
