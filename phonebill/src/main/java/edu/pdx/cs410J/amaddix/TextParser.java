@@ -40,6 +40,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         throw new ParserException("Missing customer");
       }
 
+<<<<<<< HEAD
       int callIndex=0;
       int i=1;
       PhoneCall callList[] = new PhoneCall[15];
@@ -76,6 +77,11 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
         }
 
         /*
+=======
+      int argAmount=0;
+      int i=0;
+      while((st=br.readLine())!=null){
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
         if(i == 0){
           caller = st;
           argAmount++;
@@ -104,7 +110,11 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
           argAmount++;
           i++;
 
+<<<<<<< HEAD
         } */
+=======
+        }
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 
       }
 

@@ -29,18 +29,29 @@ public class Project2 {
    * Project constructor to initalize bill list to null
    */
   public Project2() {
+<<<<<<< HEAD
     this.customerBill = new PhoneBill();
     this.billList = null;
+=======
+//    this.customerBill = new PhoneBill();
+ //   this.billList = null;
+//    Project2 temp = new Project2();
+    super();
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
   }
 
   /**
    * Initialize constructor with string arg for each variable in bill
+<<<<<<< HEAD
    *
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
    * @param tname
    * @param tcaller
    * @param tcallee
    * @param tstart
    * @param tend
+<<<<<<< HEAD
    */
 
   public Project2(String tname, String tcaller, String tcallee, String tstart, String tend) {
@@ -52,13 +63,37 @@ public class Project2 {
   /**
    * Takes a string that should be a customer phone number, and verifies that it matches that format.
    *
+=======
+   *
+   */
+
+   
+
+  public Project2(String tname, String tcaller, String tcallee, String tstart, String tend) {
+   this.customerBill = new PhoneBill(tname, tcaller, tcallee, tstart, tend);
+    this.billList = null;
+//    Project2 temp = new Project2(tname,tcaller,tcallee,tstart, tend);
+//    super.Project2(tname, tcaller, tcallee, tstart, tend);
+  }
+  
+
+  /**
+   * Takes a string that should be a customer phone number, and verifies that it matches that format.
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
    * @param phoneNumber
    * @return true if string matches phone number, false otherwise
    */
 
+<<<<<<< HEAD
   @VisibleForTesting
   static boolean isValidPhoneNumber(String phoneNumber) {
     String phonePattern = "^([0-9]{10})|([0-9]{3}-[0-9]{3}-[0-9]{4})|([0-9]{10})|([0-9]{3} [0-9]{3} [0-9]{4})$";
+=======
+
+  @VisibleForTesting
+  static boolean isValidPhoneNumber(String phoneNumber) {
+    String phonePattern = "^[0-9]{10}$";
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     if (phoneNumber.matches(phonePattern)) {
       return true;
     } else
@@ -67,28 +102,43 @@ public class Project2 {
 
   /**
    * Reads in list of arguments that would make up a phone bill, and filter through to identify information
+<<<<<<< HEAD
    *
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
    * @param initialIndex
    * @param targs
    * @return 0 if a phoneBill was not made, 1 if it was made without call time, 2 if it was made with all arguments
    */
 
+<<<<<<< HEAD
   static public int checkArgs(int initialIndex, String targs[]) {
     String namePattern = "^[a-zA-Z0-9 ]+$";
     String datePattern = "^(0[0-9]|1[0-2])/([012][0-9]|3[01])/2022 [012][0-9]:[0-6][0-9]$";
     //String tcustomer = null;
     boolean flag = true;
+=======
+  static int checkArgs(int initialIndex, String targs[]) {
+    String namePattern = "^[a-zA-Z0-9]+$";
+    String datePattern = "^(0[0-9]|1[0-2])/([012][0-9]|3[01])/2022 [012][0-9]:[0-6][0-9]$";
+
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 
     //READING IN ARGS FROM FILE- SAVING AS INITIAL PHONE BILL-
     //if no args were read in from command line
     System.out.println("length " + targs.length);
     System.out.println("index " + initialIndex);
+<<<<<<< HEAD
     //String customerName
+=======
+
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 
     if (targs.length == 0) {
       System.err.println("Missing command line arguments");
 
     }
+<<<<<<< HEAD
 /*
     int i = initialIndex;
     while (i < targs.length){
@@ -262,11 +312,63 @@ public class Project2 {
   }
 
 
+=======
+    //if the first arg read in matches char pattern- its the customer name/save
+    if (targs[initialIndex].matches(namePattern)) {
+      //System.out.println("Customer Name : " + targs[0]);
+      //check that args 2 and 3 are both phone numbers- save
+      if (targs.length >= initialIndex + 3) {
+        if (isValidPhoneNumber(targs[initialIndex + 1])) {
+          if (isValidPhoneNumber(targs[initialIndex + 2])) {
+            //System.out.println("Caller : " + targs[1] + "   Callee: " + targs[2]);
+          } else {
+            System.err.println("Callee Phone number Invalid");
+            return 0;
+          }
+          //if args 4 and 5 are read in, we confirm they match the pattern of a date.
+          if (targs.length >= initialIndex + 7) {
+            String tstart = targs[initialIndex + 3] + " " + targs[initialIndex + 4];
+
+            if (tstart.matches(datePattern)) {
+              String tend = targs[initialIndex + 5] + " " + targs[initialIndex + 6];
+              if (tend.matches(datePattern)) {
+                return 2;
+              } else {
+                System.err.println("End time invalid");
+                return 1;
+              }
+            } else {
+              System.err.println("Start time invalid");
+              return 1;
+            }
+          }
+          //if no date/time read in, save as null
+          else {
+            System.err.println("No start and/or end call time for phone call- will be saved as '0'");
+            return 1;
+          }
+        } else {
+          System.err.println("Caller Phone number Invalid");
+          return 0;
+        }
+      } else {
+        System.err.println("No Caller or Callee numbers - No Phone call recored");
+        return 0;
+      }
+    }
+    return 0;
+  }
+
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
   /**
    * displays the information of a phone bill within a phone
    */
 
+<<<<<<< HEAD
   public int display() {
+=======
+  public int display(){
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     /*
     String tname = this.customerBill.getCustomer();
     if((this.customerBill.getCaller(0) ) != null) {
@@ -290,7 +392,10 @@ public class Project2 {
 
   /**
    * allows option to save a phone bill from a text file, or write a phone bill to a text file
+<<<<<<< HEAD
    *
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
    * @param filename
    * @return
    * @throws ParserException
@@ -298,6 +403,7 @@ public class Project2 {
    * @throws UnsupportedEncodingException
    */
 
+<<<<<<< HEAD
   public PhoneBill fileManager(String filename) throws ParserException, java.io.FileNotFoundException, UnsupportedEncodingException {
     try {
 
@@ -333,6 +439,51 @@ public class Project2 {
     } catch (IOException e) {
       e.printStackTrace();
     }
+=======
+  public PhoneBill fileManager(int choice , String filename) throws ParserException, java.io.FileNotFoundException, UnsupportedEncodingException {
+      try {
+
+        if (choice == 1) {
+          if (filename != null) {
+            //create new textfile
+            System.err.println("ch1");
+
+            System.out.println("found file name  " + filename);
+            Reader readerType = new FileReader(filename);
+            TextParser parser = new TextParser(readerType);
+            PhoneBill bill = parser.parse();
+            System.out.println("contents -> bill");
+            bill.display();
+            return bill;
+          }
+          }
+
+        if (choice == 2) {
+          System.err.println("ch2");
+          if(filename != null) {
+            //System.err.println("error- making new");
+            TextDumper dumper = new TextDumper(new FileWriter(filename));
+            PhoneBill tbill = this.customerBill;
+            dumper.dump(tbill);
+            return tbill;
+          }
+          //PhoneBill bill = new PhoneBill();
+        }
+      } catch (ParserException ex) {
+        // insert code to run when exception occurs
+        System.out.println("error w parser");
+      } catch (java.io.FileNotFoundException ex) {
+        //} catch (java.text.FileNotFoundException ex) {
+        // insert code to run when exception occurs
+        System.out.println(ex);
+        //PrintWriter writer = new PrintWriter(filename, "UTF-8");
+        //Reader readerType = new FileReader(filename);
+        //TextParser parser = new TextParser(readerType);
+
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 
     PhoneBill bill = new PhoneBill();
     return bill;
@@ -345,7 +496,10 @@ public class Project2 {
 
 
   public static void main(String[] args) {
+<<<<<<< HEAD
     System.out.println("Entering program: compilation success");
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     String targs[] = new String[args.length];
     Project2 proj = null;
     //TextParser parser = new TextParser();
@@ -358,6 +512,7 @@ public class Project2 {
     boolean print = false;
     boolean textfile = false;
     boolean readme = false;
+<<<<<<< HEAD
     int var = 0;
     int tempvar = 0;
 
@@ -402,11 +557,45 @@ public class Project2 {
                 "and confirms both the following args are strings containing 10 digits (to match a phone number). If these requirements\n" +
                 "are met, a phone bill is created with these values. Otherwise the program should exit and return an error message.");
       } else {
+=======
+    int var=0;
+    int tempvar=0;
+
+
+    if (args.length == 0) {
+      System.err.println("Missing command line arguments");
+    } else {
+
+      for (int i = 0; i <= 4; i++) {
+        if (args[i].matches("-print")) {
+          //print
+          numOptions = numOptions + 1;
+          print = true;
+          //System.out.println("in print" + numOptions);
+        } else if (args[i].matches("-textFile")) {
+          if (args[i + 1] != null) {
+            //add to text
+            //or read from text
+            i = i + 1;
+            numOptions = numOptions + 2;
+            filename = args[i];
+            textfile = true;
+          } else if (args[i].matches("-README")) {
+            numOptions = numOptions + 1;
+            readme = true;
+
+            //readme display
+          }
+        }
+
+
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 
 
         //  IF ARGS ARE PASSED IN COMMAND LINE, CHECK IF THEY MATCH CORRECT FORMAT OF PHONE BILL- SAVE IF SO
         if (args.length >= numOptions) {
           System.out.println("length " + args.length);
+<<<<<<< HEAD
           System.out.println(" num options : " + numOptions);
           initialArgFlag = checkArgs(numOptions, args);
           System.out.println("flag - " + initialArgFlag);
@@ -454,6 +643,52 @@ public class Project2 {
 
         //if print flag is called + we have arguments for a phone call
 
+=======
+          initialArgFlag = checkArgs(numOptions, args);
+          System.out.println("returned value" + initialArgFlag);
+
+          var=1;
+          tempvar=var;
+
+          if (initialArgFlag == 1) {
+            proj = new Project2(args[numOptions], args[numOptions + 1], args[numOptions + 2], null, null);
+            if (print == true) {
+              proj.display();
+            }
+
+          } else if (initialArgFlag == 2) {
+
+            String tStart = args[numOptions + 3] + " " + args[numOptions + 4];
+            String tend = args[numOptions + 5] + " " + args[numOptions + 6];
+            proj = new Project2(args[numOptions], args[numOptions + 1], args[numOptions + 2], tStart, tend);
+
+            if (print == true) {
+              proj.display();
+            }
+
+          } else {
+            System.err.println("Missing command line arguments");
+            System.out.println("Arguments found:  ");
+            for (String arg : args) {
+              System.out.println(args);
+            }
+          }
+        }
+      }
+
+      //if print flag is called + we have arguments for a phone call
+
+      if (readme == true) {
+        System.out.println("readme- info");
+      } else {
+      /*if (print == true) {
+        if (initialArgFlag >= 1) {
+          if (proj) {
+            proj.display();
+
+          }
+        }*/
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
         if (textfile == true) {
           //  DISPLAY MENU
           //String tfile = filename;
@@ -463,7 +698,11 @@ public class Project2 {
               tfile.createNewFile();
             }
 
+<<<<<<< HEAD
               /*Scanner scanning = new Scanner(System.in);
+=======
+              Scanner scanning = new Scanner(System.in);
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
               int choice = 0;
               while (choice != 3) {
                 System.out.println(" 1.   Would you like to read in a list of bills from a text file? \n" +
@@ -472,6 +711,7 @@ public class Project2 {
                 choice = scanning.nextInt();
 
                 PhoneBill bill = proj.fileManager(choice, filename);
+<<<<<<< HEAD
               }*/
             if (proj != null) {
               PhoneBill bill = proj.fileManager(filename);
@@ -479,6 +719,12 @@ public class Project2 {
           } catch (ParserException ex) {
             System.err.println(ex);
           } catch (java.io.FileNotFoundException ex) {
+=======
+              }
+            } catch (ParserException ex) {
+            System.err.println(ex);
+          }catch (java.io.FileNotFoundException ex) {
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
             System.err.println(ex);
           } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -496,7 +742,10 @@ public class Project2 {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 /*
     //read in name of text file name from command line
     //verify that file exists

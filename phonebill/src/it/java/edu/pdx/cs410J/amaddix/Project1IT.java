@@ -50,6 +50,7 @@ class Project2IT extends InvokeMainTestCase {
         assertThat(result.getTextWrittenToStandardError(), containsString("Start time invalid"));
 
     }
+<<<<<<< HEAD
 
     @Test
     void testCorrect(){
@@ -74,15 +75,25 @@ class Project2IT extends InvokeMainTestCase {
 
 
 
+=======
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
 /*
     @Test
     void testWithNoTime() {
         MainMethodResult result = invokeMain("Ashley", "4453577734", "9797876784");
+<<<<<<< HEAD
         assertThat(result.getTextWrittenToStandardError(), containsString("End time invalid"));
 
     }*/
 /*
     @Test
+=======
+        assertThat(result.getTextWrittenToStandardError(), containsString("No start and/or end call time for phone call- will be saved as '0'"));
+
+    }*/
+
+   /* @Test
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     void testWithNoNUm() {
         MainMethodResult result = invokeMain("Ashley");
         assertThat(result.getTextWrittenToStandardError(), containsString("No Caller or Callee numbers - No Phone call recored"));

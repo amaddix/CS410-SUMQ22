@@ -41,6 +41,10 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     this.callNum=0;
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
   /**
    * constructor initializing with all variables in a phone bill
    * @param customer
@@ -53,7 +57,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   public PhoneBill (String customer, String caller, String callee, String tstart, String tend){
     this.customer=customer;
     this.callNum = 1;
+<<<<<<< HEAD
     this.call= new PhoneCall[15];
+=======
+    this.call= new PhoneCall[2];
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     this.call[callNum-1]=new PhoneCall(caller, callee, tstart, tend);
   }
 /*
@@ -69,6 +77,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   }
 */
+  /**
+   * @param item
+   * @return the caller string
+   */
+
   /**
    * @param item
    * @return the caller string
@@ -124,6 +137,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   }
 
+<<<<<<< HEAD
   public int getCallNum(){
     return this.callNum;
   }
@@ -143,6 +157,20 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
         System.out.println(tStart + " - " + tend);
         return 1;
       }
+=======
+  public int display() {
+    String tname = this.getCustomer();
+    if (this.getCaller(0) != null) {
+      String tcaller = this.getCaller(0);
+      String tcallee = this.getCallee(0);
+      String tStart = this.getStartTime(0);
+      String tend = this.getEndTime(0);
+      ///
+      System.out.println("Customer  :   " + tname);
+      System.out.println("Caller : " + tcaller + "    Callee :  " + tcallee);
+      System.out.println(tStart + " - " + tend);
+      return 1;
+>>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
     }
     return 0;
   }
