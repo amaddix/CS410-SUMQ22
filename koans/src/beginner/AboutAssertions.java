@@ -10,46 +10,49 @@ public class AboutAssertions {
     @Koan
     public void assertBooleanTrue() {
         // there are two possibilities, true or false, what would it be here?
-        assertTrue(__);
+        assertTrue(true);
     }
 
     @Koan
     public void assertBooleanFalse() {
-        assertFalse(__);
+        assertFalse(false);
     }
 
     @Koan
     public void assertNullObject() {
         // reference to the object can be null, a magic keyword, null, which means
         // that there is nothing there
-        assertNull(__);
+        assertNull(null);
     }
 
     @Koan
     public void assertNullObjectReference() {
-        Object someObject = __;
+        Object someObject = null;
         assertNull(someObject);
     }
 
     @Koan
     public void assertNotNullObject() {
         // but what when there should not be a null value?
-        assertNotNull(null);
+        int var =1;
+        assertNotNull(var);
     }
 
     @Koan
     public void assertEqualsUsingExpression() {
-        assertTrue("Hello World!".equals(__));
+        String hw = "Hello World!";
+        assertTrue("Hello World!".equals(hw));
     }
 
     @Koan
     public void assertEqualsWithAFewExpressions() {
-        assertEquals("Hello World!", __);
-        assertEquals(1, __);
-        assertEquals(2 + 2, __);
-        assertEquals(2 * 3, __);
-        assertEquals(3 - 8, __);
-        assertEquals(10 / 2, __);
+        String hw = "Hello World!";
+        assertEquals("Hello World!", hw);
+        assertEquals(1, 1);
+        assertEquals(2 + 2, 4);
+        assertEquals(2 * 3, 6);
+        assertEquals(3 - 8, -5);
+        assertEquals(10 / 2, 5);
     }
 
     @Koan
@@ -57,19 +60,23 @@ public class AboutAssertions {
         // Generally, when using an assertXXX methods, expectation is on the
         // left and it is best practice to use a String for the first arg
         // indication what has failed
-        assertEquals("The answer to 'life the universe and everything' should be 42", 42, __);
+        assertEquals("The answer to 'life the universe and everything' should be 42", 42, 42);
     }
 
     @Koan
     public void assertSameInstance() {
-        Integer original = new Integer(1);
+        int original = new Integer(1);
         Integer same = original;
         Integer different = new Integer(1);
+
+       // int original = 1;
+       // int same = original;
+       // int different = 1;
         // These are both equal to the original...
         assertEquals(original, same);
         assertEquals(original, different);
         // ...but only one refers to the same instance as the original.
-        assertSame(original, __);
+        assertSame(original, same);
     }
 
     @Koan
@@ -78,9 +85,13 @@ public class AboutAssertions {
         Integer same = original;
         Integer different = new Integer(1);
         // These are both equal to the original...
+        //int original = 1;
+        //int same = original;
+        //int different = 1;
+
         assertEquals(original, same);
         assertEquals(original, different);
         // ...but only one of them refers to a different instance.
-        assertNotSame(original, same);  // We want equal, but _not_ the same.
+        assertNotSame(original, different);  // We want equal, but _not_ the same.
     }
 }
