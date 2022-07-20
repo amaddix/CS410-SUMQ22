@@ -10,12 +10,12 @@ public class AboutAssertions {
     @Koan
     public void assertBooleanTrue() {
         // there are two possibilities, true or false, what would it be here?
-        assertTrue(true);
+        assertTrue(true==true);
     }
 
     @Koan
     public void assertBooleanFalse() {
-        assertFalse(false);
+        assertFalse(true == false);
     }
 
     @Koan
@@ -60,7 +60,7 @@ public class AboutAssertions {
         // Generally, when using an assertXXX methods, expectation is on the
         // left and it is best practice to use a String for the first arg
         // indication what has failed
-        assertEquals("The answer to 'life the universe and everything' should be 42", 42, 42);
+        assertEquals("The answer to 'life the universe and everything' should be 42", "The answer to 'life the universe and everything' should be 42");
     }
 
     @Koan

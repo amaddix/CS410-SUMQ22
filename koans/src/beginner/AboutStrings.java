@@ -1,3 +1,4 @@
+
 package beginner;
 
 import com.sandwich.koan.Koan;
@@ -14,7 +15,7 @@ public class AboutStrings {
     @Koan
     public void implicitStrings() {
         String var ="hi";
-        assertEquals("just a plain ole string".getClass(), var.getClass());
+        assertEquals("just a plain ole string".getClass(), String.class);
     }
 
     @Koan

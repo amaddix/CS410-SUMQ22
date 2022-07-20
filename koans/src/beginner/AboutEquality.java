@@ -11,8 +11,8 @@ public class AboutEquality {
     public void doubleEqualsTestsIfTwoObjectsAreTheSame() {
         Object object = new Object();
         Object sameObject = object;
-        assertEquals(object == sameObject, true);
-        assertEquals(object == new Object(), false);
+        assertEquals(object == sameObject, sameObject == sameObject);
+        assertEquals(object == new Object(), new Object() == object);
     }
 
     @Koan
