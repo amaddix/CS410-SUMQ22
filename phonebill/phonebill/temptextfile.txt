@@ -1,0 +1,7 @@
+	 	 	 	-Entering Bill Log-     
+
+	 	 Call list of customer     :	Ashley
+	 	 Incoming call from        :	5867375767
+	 	 Call received by          :	7477579494
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 AM	 - 	4/28/22, 1:45 AM

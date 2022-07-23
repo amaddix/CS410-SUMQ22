@@ -6,9 +6,5 @@
 
   Project 2 allows user to call options from the command line with the arguments for a phone call (directly beforehand). The options allowed to the user are -print, -textFile, and -README.
   The -print displays the phonecall created from out command line arguments, -textFile pops up a menu that allows user to choose between reading to a file and from a file to create a new phone bill.
-  The -README displays README contents and then exits program. The arguments that make up a phonebill are all strings. 
-
-  Project 3 takes in the first argument assuming its a name (allowing letters and numbers), then the next argument lines have either 10 straight digits or digits following a pattern of ddd-ddd-dddd. The time is tested by a format that matches MM/DD/YYYY HH:MM am/pm.
-
-  We added the Pretty printer class which I use in place of the text dumper, it reformats the textfile to be better looking. The start and end time dates reformat to the java.dateformater.SHORT. The program now sucessfully writes multiple phonecalls to the textfile and its reordered by phone number, in both the file and the call array.
-
+  The -README displays README contents and then exits program. The arguments that make up a phonebill are all strings. The first being a name (allowing letters and numbers), then the next argument lines have 
+  digits with nothing else. The time is tested by a format that matches MM/DD/YYYY HH:MM. 

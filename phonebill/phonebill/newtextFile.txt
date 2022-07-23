@@ -1,0 +1,71 @@
+	 	 	 	-Entering Bill Log-     
+
+	 	 Call list of customer     :	ash
+	 	 Incoming call from        :	1111112222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1111112222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1111112222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1111112222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	1133332222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	2222222222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	5555552222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	8880707070
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
+	 	 Incoming call from        :	9999992222
+	 	 Call received by          :	4444444444
+	 	 Total call time           :	8 minutes
+	 	3/12/22, 3:22 AM	 - 	3/12/22, 3:30 AM
