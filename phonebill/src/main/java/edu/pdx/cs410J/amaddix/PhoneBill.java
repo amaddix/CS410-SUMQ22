@@ -24,37 +24,68 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   public PhoneBill(){
     this.customer=null;
-    this.call= new PhoneCall[10];
+    this.call= new PhoneCall[100];
     this.callNum=0;
 
   }
 
   /**
    * constructor initializing with only customer
-   * @param customer
+   * @param customer -string
    */
 
   public PhoneBill(String customer) {
     this.customer = customer;
     //creating an array of phonecalls with 30 total slots for calls
-    this.call= new PhoneCall[15];
+    this.call= new PhoneCall[100];
     this.callNum=0;
   }
 
   /**
    * constructor initializing with all variables in a phone bill
-   * @param customer
-   * @param caller
-   * @param callee
-   * @param tstart
-   * @param tend
+   * @param customer -string
+   * @param caller - string
+   * @param callee - string
+   * @param tstart -string
+   * @param tend -string
    */
   //customer name, single call log (call list =1)
   public PhoneBill (String customer, String caller, String callee, String tstart, String tend){
     this.customer=customer;
-    this.callNum = 1;
-    this.call= new PhoneCall[15];
-    this.call[callNum-1]=new PhoneCall(caller, callee, tstart, tend);
+    if(this.callNum == 0) {
+      this.call = new PhoneCall[100];
+    }
+    this.callNum = this.callNum +1;
+
+    this.call[callNum-1]=new PhoneCall(customer,caller, callee, tstart, tend);
+   // this.callNum = 1;
+
+  }
+  public PhoneBill(PhoneCall tcall){
+    this.customer = tcall.getCustomer();
+    if(this.call == null){
+      this.call= new PhoneCall[15];
+      this.callNum = 0;
+    }
+    if(tcall != null) {
+      this.call[callNum] = new PhoneCall(tcall);
+      this.callNum = this.callNum + 1;
+    }
+  }
+
+  public PhoneBill(PhoneBill tbill){
+    String tcaller = tbill.getCaller(callNum);
+    String tcallee = tbill.getCallee(callNum);
+    String tstime = tbill.getStartTime(callNum);
+    String tetime = tbill.getEndTime(callNum);
+    this.customer = tbill.getCustomer();
+    if( this.callNum == 0){
+      this.call = new PhoneCall[15];
+    }
+    this.callNum = this.callNum +1;
+
+    this.call[callNum-1] = new PhoneCall(this.customer,tcaller,tcallee, tstime, tetime);
+
   }
 /*
   public PhoneBill(PhoneBill bill){
@@ -70,7 +101,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 */
   /**
-   * @param item
+   * @param item int
    * @return the caller string
    */
 
@@ -82,7 +113,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 
   /**
-   * @param item
+   * @param item int
    * @return the callee string
    */
   public String getCallee(int item){
@@ -93,7 +124,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 
   /**
-   * @param item
+   * @param item int
    * @return starttime string
    */
   public String getStartTime(int item){
@@ -104,7 +135,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 
   /**
-   * @param item
+   * @param item int
    * @return endtime string
    */
   public String getEndTime(int item){
@@ -115,7 +146,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 
   /**
-   * @return customer name
+   * @return customer name string
    */
 
   @Override
@@ -124,16 +155,24 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
   }
 
+  /**
+   * @return int w number of calls a bill has
+   */
   public int getCallNum(){
     return this.callNum;
   }
+
+  /**
+   * @return int - to show programs working correctly
+   */
 
   public int display() {
     String tname = this.getCustomer();
     int index = 0;
     if (this.getCaller(index) != null) {
       System.out.println("Customer  :   " + tname);
-      while(index <= this.callNum) {
+      while(index < this.callNum) {
+
         String tcaller = this.getCaller(index);
         String tcallee = this.getCallee(index);
         String tStart = this.getStartTime(index);
@@ -141,8 +180,10 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
         ///
         System.out.println("Caller : " + tcaller + "    Callee :  " + tcallee);
         System.out.println(tStart + " - " + tend);
-        return 1;
+        index= index+1;
+
       }
+      return 1;
     }
     return 0;
   }
@@ -154,11 +195,82 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   @Override
   public void addPhoneCall(PhoneCall temp_call) {
     //called from main- read in phone number from user.
-    this.call[callNum]=new PhoneCall(temp_call);
-      callNum=callNum+1;
+    this.call[this.callNum]=new PhoneCall(temp_call);
+    this.callNum=this.callNum+1;
+
+    this.sorted();
+    //this.display();
     //throw new UnsupportedOperationException("This method is not implemented yet");
   }
 
+  /**
+   * sorts phone call in a phone call list
+   */
+  public void sorted() {
+    String patternDash = "^([0-9]{3}-[0-9]{3}-[0-9]{4})|([0-9]{10})$";
+    String patternSpace = "^([0-9]{3} [0-9]{3} [0-9]{4})$";
+    for (int i = 0; i < this.callNum; i++) {
+      for (int j = i + 1; j < this.callNum; j++) {
+
+       // System.out.println("in here123 " + j " and " + this.call.length);
+
+
+        Double tj=0d;
+        Double ti=0d;
+
+        if(this.call[i].getCaller().matches(patternDash)) {
+          String tstring = this.call[i].getCaller().replace("-", "");
+          ti = Double.parseDouble(tstring);
+        }
+        else if(this.call[i].getCaller().matches(patternSpace)) {
+          String tstring = this.call[i].getCaller().replace(" ", "");
+          ti = Double.parseDouble(tstring);
+        }
+        else{
+          ti = Double.parseDouble(this.call[j].getCaller());
+        }
+        ////////////
+
+        if(this.call[j].getCaller().matches(patternDash)) {
+          String tstring = this.call[j].getCaller().replace("-", "");
+          tj = Double.parseDouble(tstring);
+        }
+
+        else if(this.call[j].getCaller().matches(patternSpace)) {
+          String tstring = this.call[j].getCaller().replace(" ", "");
+          tj = Double.parseDouble(tstring);
+        }
+        else{
+          tj = Double.parseDouble(this.call[j].getCaller());
+        }
+
+        PhoneCall tmp = null;
+        if (ti > tj) {
+          tmp = this.call[i];
+          this.call[i] = this.call[j];
+          this.call[j] = tmp;
+        }
+      }
+    }
+  }
+/*
+  public void sortPhoneCalls(){
+    PhoneCall tarray = new PhoneCall[callNum]
+    if(callNum > 1){
+      //for loop to iterate array
+      for(int i =0; i<callNum ; i++){
+        boolean flag = false;
+        for(int j=i; j<callNum; j++){
+          if(this.call[i]>)
+        }
+      }
+        //second loop for each index to compare value
+        //add greater value call
+
+      //save tarray as new phone call array
+    }
+  }
+*/
   @Override
   public Collection<PhoneCall> getPhoneCalls() {
     //Collection<PhoneCall> col = new ArrayList<>();

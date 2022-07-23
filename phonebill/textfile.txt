@@ -1,0 +1,31 @@
+	 	 	 	-Entering Bill Log-     
+
+	 	 Call list of customer     :	Ashley
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM
+	 	 Incoming call from        :	9584758564
+	 	 Call received by          :	8577689786
+	 	 Total call time           :	17 minutes
+	 	4/28/22, 1:28 PM	 - 	4/28/22, 1:45 PM

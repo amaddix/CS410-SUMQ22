@@ -2,8 +2,20 @@ package edu.pdx.cs410J.amaddix;
 
 import edu.pdx.cs410J.AbstractPhoneCall;
 
+import java.awt.desktop.ScreenSleepEvent;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import static java.util.Locale.*;
+import static java.util.Locale.ENGLISH;
+
 public class PhoneCall extends AbstractPhoneCall {
   //variables of a phone call
+
+  private String customer;
   private String caller;
   private String callee;
   private String startTime;
@@ -12,6 +24,7 @@ public class PhoneCall extends AbstractPhoneCall {
 
   //base constructor
   public PhoneCall(){
+    this.customer = null;
     this.caller=null;
     this.callee=null;
     this.startTime=null;
@@ -27,7 +40,8 @@ public class PhoneCall extends AbstractPhoneCall {
    */
 
   //constructor with caller and callee
-  public PhoneCall(String tcaller, String tcallee, String tstartTime, String tendTime){
+  public PhoneCall(String tcustomer, String tcaller, String tcallee, String tstartTime, String tendTime){
+    this.customer = tcustomer;
     this.caller=tcaller;
     this.callee=tcallee;
     this.startTime=tstartTime;
@@ -41,6 +55,7 @@ public class PhoneCall extends AbstractPhoneCall {
 
   //constructor with 2 string num
   public PhoneCall(PhoneCall tempcall){
+    this.customer=tempcall.customer;
     this.caller= tempcall.caller;
     this.callee=tempcall.callee;
     this.startTime=tempcall.startTime;
@@ -59,6 +74,10 @@ public class PhoneCall extends AbstractPhoneCall {
 
    */
 
+
+  public String getCustomer(){
+    return this.customer;
+  }
 
   /**
    * @return caller
@@ -83,16 +102,59 @@ public class PhoneCall extends AbstractPhoneCall {
    */
   @Override
   public String getBeginTimeString() {
-    return this.startTime;
-  }
+      try {
+        if(this.startTime != null) {
+          if(this.startTime.matches("^([1-9]|1[0-2])/([012][0-9]|3[01])/22, ([1-9]|[012][0-9]):[1-6][0-9] ([A][M]|[P][M])$")){
+            return this.startTime;
+          }
+          String tname= this.startTime;
+          SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+          Date ttime = sdf.parse(tname);
+          //Date ttime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.ENGLISH).parse(this.startTime);
+          //System.out.println(ttime);
+
+          String time = sdf.getDateTimeInstance(sdf.SHORT, sdf.SHORT).format(ttime);
+          //System.out.println(time);
+          return time;
+
+        }
+      } catch (ParseException e) {
+        e.printStackTrace();
+      }
+
+      return "no time";
+    }
 
   /**
    * @return endTime
    */
 
+
   @Override
   public String getEndTimeString() {
-    return this.endTime;
+    try {
+      if(this.endTime != null) {
+          if(this.startTime.matches("^([1-9]|1[0-2])/([012][0-9]|3[01])/22, ([1-9]|[012][0-9]):[1-6][0-9] ([A][M]|[P][M])$")){
+            return this.endTime;
+          }
+
+        String tname= this.endTime;
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        Date ttime = sdf.parse(tname);
+        //Date ttime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.ENGLISH).parse(this.startTime);
+        //System.out.println(ttime);
+
+        String time = sdf.getDateTimeInstance(sdf.SHORT, sdf.SHORT).format(ttime);
+        //System.out.println(time);
+        return time;
+
+      }
+    } catch (ParseException e) {
+      e.printStackTrace();
+    }
+
+    return "no time";
+   // return this.endTime;
    // throw new UnsupportedOperationException("This method is not implemented yet");
   }
 }

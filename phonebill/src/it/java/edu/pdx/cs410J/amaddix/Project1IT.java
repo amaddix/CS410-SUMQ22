@@ -8,15 +8,15 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Tests the functionality in the {@link Project2} main class.
+ * Tests the functionality in the {@link Project3} main class.
  */
-class Project2IT extends InvokeMainTestCase {
+class Project3IT extends InvokeMainTestCase {
 
     /**
-     * Invokes the main method of {@link Project2} with the given arguments.
+     * Invokes the main method of {@link Project3} with the given arguments.
      */
     private MainMethodResult invokeMain(String... args) {
-        return invokeMain( Project2.class, args );
+        return invokeMain( Project3.class, args );
     }
 
   /**
@@ -47,28 +47,30 @@ class Project2IT extends InvokeMainTestCase {
     @Test
     void testWithWrongStart() {
         MainMethodResult result = invokeMain("Ashley", "4453577734", "9797876784", "07/asadas2022", "10:5sds5", "07/13/2022", "11:30");
-        assertThat(result.getTextWrittenToStandardError(), containsString("Start time invalid"));
+        assertThat(result.getTextWrittenToStandardError(), containsString("No start and/or end call time for phone call- will be saved as '0'"));
 
     }
 
     @Test
     void testCorrect(){
-        String stArray[] = new String[7];
+        String stArray[] = new String[9];
         stArray[0] = "Ashley";
         stArray[1] = "9584758564";
         stArray[2] = "8577689786";
         stArray[3] = "04/28/2022";
         stArray[4] = "01:28";
-        stArray[5] = "04/28/2022";
-        stArray[6] = " 01:45";
+        stArray[5] = "am";
+        stArray[6] = "04/28/2022";
+        stArray[7] = "01:45";
+        stArray[8] = "am";
 
-        String start = "04/28/2022 01:28";
-        String end = "04/28/2022 01:45";
-        Project2 tproj = new Project2();
+        String start = "04/28/2022 1:28 am";
+        String end = "04/28/2022 1:45 am";
+        Project3 tproj = new Project3();
         //Project1 tproj = new Project1(stArray[0], stArray[1], stArray[2], start, end);
 
         MainMethodResult result = invokeMain(stArray);
-        assertThat(tproj.checkArgs(0, stArray), equalTo(0));
+        assertThat(tproj.checkArgs(0, stArray), equalTo(2));
       //  assertThat(tproj.checkArgs(0,stArray), equalTo(2));
     }
 
@@ -78,25 +80,11 @@ class Project2IT extends InvokeMainTestCase {
     @Test
     void testWithNoTime() {
         MainMethodResult result = invokeMain("Ashley", "4453577734", "9797876784");
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 088576c49fa6548c26face59ddcf031a237ca72c
         assertThat(result.getTextWrittenToStandardError(), containsString("End time invalid"));
 
     }*/
 /*
     @Test
-<<<<<<< HEAD
-=======
-=======
-        assertThat(result.getTextWrittenToStandardError(), containsString("No start and/or end call time for phone call- will be saved as '0'"));
-
-    }*/
-
-   /* @Test
->>>>>>> c76be71a01acacd17615f6f74cbc08106523de9a
->>>>>>> 088576c49fa6548c26face59ddcf031a237ca72c
     void testWithNoNUm() {
         MainMethodResult result = invokeMain("Ashley");
         assertThat(result.getTextWrittenToStandardError(), containsString("No Caller or Callee numbers - No Phone call recored"));
