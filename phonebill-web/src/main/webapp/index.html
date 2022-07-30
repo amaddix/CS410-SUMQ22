@@ -30,21 +30,30 @@
 
 <div>
     <form method="get" action="calls">
-        List all dictionary entries <input type="submit" definition="Submit"/>
+        Get Phone Bill information from customer : bitch
+        <input name="customer" type="text" size="10" title="customer"/>
+        <input type="submit" definition="Submit"/>
     </form>
 </div>
 
 <div>
     <form method="get" action="calls">
-        List definition for word <input name="word" type="text" size="10" title="word"/>
+        Searching for all calls between two given dates/times
+        Customer name :  <input name="customer" type="text" size="10" title="customer"/>
+        start date / time (MM/dd/YYYY hh:mm am/pm) :  <input name="start" type="text" size="10" title="start"/>
+        End date / time (MM/dd/YYYY hh:mm am/pm) :  <input name="end" type="text" size="10" title="end"/>
         <input type="submit" definition="Submit"/>
     </form>
 </div>
 
 <div>
     <form method="post" action="calls">
-        Create a dictionary entry <input name="word" type="text" size="10" title="word"/> :
-        <input name="definition" type="text" size="100" title="definition"/>
+        Adding a phone call :
+        Customer name: <input name="customer" type="text" size="25" title="customer"/>
+        Caller number : <input name="caller" type="text" size="10" title="caller"/>
+        Callee number : <input name="callee" type="text" size="10" title="callee"/>
+        start date / time (MM/dd/YYYY hh:mm am/pm) :  <input name="start" type="text" size="10" title="start"/>
+        End date / time (MM/dd/YYYY hh:mm am/pm) :  <input name="end" type="text" size="10" title="end"/>
         <input type="submit" definition="Submit"/>
     </form>
 </div>

@@ -27,7 +27,32 @@ class PhoneBillRestClientIT {
     return new PhoneBillRestClient(HOSTNAME, port);
   }
 
-  @Test
+@Test
+  void testcorrect() throws IOException, ParserException {
+
+      PhoneBillRestClient client = newPhoneBillRestClient();
+        String customer = "ash";
+        String caller = "3748574747";
+        String callee = "9483737475";
+        String startdate = "04/28/2022";
+        String starttime = "01:28";
+        String startampm = "am";
+        String enddate = "04/28/2022";
+        String endtime = "01:45";
+        String endampm = "am";
+        client.addPhoneCall(customer, caller, callee, startdate, starttime, startampm, enddate, endtime, endtime);
+
+        assertThat(client.getBill(customer), equalTo(1));
+        assertThat(client.getSearch(customer, "04/25/2022 10:10 am", "04/30/2022 10:10 am"), equalTo(1));
+
+}
+
+
+  }
+
+
+  /*
+    @Test
   void test0RemoveAllDictionaryEntries() throws IOException {
     PhoneBillRestClient client = newPhoneBillRestClient();
     client.removeAllDictionaryEntries();
@@ -36,7 +61,7 @@ class PhoneBillRestClientIT {
   @Test
   void test1EmptyServerContainsNoDictionaryEntries() throws IOException, ParserException {
     PhoneBillRestClient client = newPhoneBillRestClient();
-    Map<String, String> dictionary = client.getAllDictionaryEntries();
+    Map<String, PhoneBill> billList = client.getAllDictionaryEntries();
     assertThat(dictionary.size(), equalTo(0));
   }
 
@@ -61,5 +86,5 @@ class PhoneBillRestClientIT {
     assertThat(ex.getHttpStatusCode(), equalTo(HttpURLConnection.HTTP_PRECON_FAILED));
     assertThat(ex.getMessage(), equalTo(Messages.missingRequiredParameter("word")));
   }
+*/
 
-}
