@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".PrettyPrint">
 
+    <LinearLayout
+        android:layout_width="316dp"
+        android:layout_height="501dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/billContents"
+            android:layout_width="match_parent"
+            android:layout_height="443dp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

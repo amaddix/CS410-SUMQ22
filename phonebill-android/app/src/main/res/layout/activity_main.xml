@@ -6,13 +6,154 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="369dp"
+        android:layout_height="609dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.867">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="@string/readfileline"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/readFile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:onClick="readFile"
+            android:text="@string/readfile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="77dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/AddBill"
+                android:layout_width="189dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="AddPhoneBill"
+                android:text="@string/addbillline" />
+
+            <Button
+                android:id="@+id/AddCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="AddPhoneCall"
+                android:text="@string/addcallline" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Pretty_Printline"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/customerName"
+                android:layout_width="240dp"
+                android:layout_height="57dp"
+                android:hint="@string/customer"
+                tools:ignore="Autofill, labelFor" />
+
+            <Button
+                android:id="@+id/PrettyPrint"
+                android:layout_width="128dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="PrettyPrint"
+                android:text="@string/Pretty_Print" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/searchline"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="197dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="296dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/search_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:hint="@string/customer"
+                    tools:ignore="Autofill, labelFor" />
+
+                <EditText
+                    android:id="@+id/search_stime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/startcompare"
+                    tools:ignore="Autofill, labelFor" />
+
+                <EditText
+                    android:id="@+id/search_etime"
+                    android:layout_width="match_parent"
+                    android:layout_height="69dp"
+                    android:hint="@string/endcompare"
+                    tools:ignore="Autofill, labelFor" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/SearchCall"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="SearchCalls"
+                android:text="@string/Search_Calls" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/help"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:backgroundTint="@color/teal_700"
+            android:onClick="ReadMe"
+            android:text="@string/Help" />
+
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

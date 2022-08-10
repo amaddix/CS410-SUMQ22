@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Phone Bill</string>
+    <string name="Add_Bill">Add Phone Bill</string>
+    <string name="Add_Call">Add Phone Call</string>
+    <string name="Search_Calls">Search</string>
+    <string name="Pretty_Print">display</string>
+    <string name="Help">Help</string>
+    <string name="hint">Customer Name</string>
+    <string name="customer">Name of Customer  :</string>
+    <string name="Create_Bill">CreateBill</string>
+    <string name="Create_Call">Creating Phone Call</string>
+    <string name="end">"enter end time of phone call "</string>
+    <string name="start">enter start time of phone call</string>
+    <string name="callee">enter callee phone number</string>
+    <string name="caller">enter caller phone number</string>
+    <string name="readfile">SAVE PRE-EXISTING FILE</string>
+    <string name="readfileline">*** if you\'d like to save any pre-exisitng files ***\n please do so before adding any new phone bills</string>
+    <string name="addbillline">"Create a new phone bill"</string>
+    <string name="addcallline">Add phonecall to a phonebill</string>
+    <string name="Pretty_Printline">Display contents of pre-existing phonebill</string>
+    <string name="searchline">\nSearch for phonecalls in a pre-existing phonebill, between the given dates and times</string>
+    <string name="startcompare">time before :\nMM/dd/yyy hh:mm am/pm </string>
+    <string name="endcompare">time after :\nMM/dd/yyy hh:mm am/pm</string>
+
 </resources>
