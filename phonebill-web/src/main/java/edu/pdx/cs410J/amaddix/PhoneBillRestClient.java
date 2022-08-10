@@ -29,8 +29,8 @@ public class PhoneBillRestClient {
 
 
   /**
+   * PHONEBILLRESTCLIENT CONSTRUCTOR
    * Creates a client to the Phone Bil REST service running on the given host and port
-   *
    * @param hostName The name of the host
    * @param port     The port
    */
@@ -38,12 +38,23 @@ public class PhoneBillRestClient {
     this(new HttpRequestHelper(String.format("http://%s:%d/%s/%s", hostName, port, WEB_APP, SERVLET)));
   }
 
+  /**
+   * PHONEBILLRESTCLIENT CONSTRUCTOR
+   * Creates a client to the Phone Bil REST service running on the given host and port
+   * @param http -HttpRequestHelper
+   */
   @VisibleForTesting
   PhoneBillRestClient(HttpRequestHelper http) {
     this.http = http;
   }
 
-
+  /**
+   * GETBILL - if client request phone bill displayed based on the customer name given
+   * @param customer - string customer name
+   * @return int to show result
+   * @throws IOException if io exception is found
+   * @throws ParserException if parser exception is found
+   */
   public int getBill(String customer) throws IOException, ParserException {
 
     Response response = http.get(Map.of("customer", customer));
@@ -59,6 +70,15 @@ public class PhoneBillRestClient {
 
   }
 
+  /**
+   * GETSTRING - if client requests phone call information between two times given,
+   * @param customer - string customer name
+   * @param start - string start time
+   * @param end - string end time
+   * @return - int to show result
+   * @throws IOException if ioexception found
+   * @throws ParserException if parser exception found
+   */
   public int getSearch(String customer, String start, String end) throws IOException, ParserException {
 
     Response response = http.get(Map.of("customer", customer, "start", start, "end", end));
@@ -77,6 +97,20 @@ public class PhoneBillRestClient {
     return 0;
   }
 
+  /**
+   * ADDPHONECALL - if client would like to add phone bill, if given all  required info save phonecall to phone bill
+   * @param customer - string customer name
+   * @param caller - string phone number
+   * @param callee - string phone  number
+   * @param startdate - string start date of call
+   * @param starttime -string start time of call
+   * @param startampm -string start am or pm
+   * @param enddate -string start date of call
+   * @param endtime -string start time of call
+   * @param endampm -string start am or pm
+   * @return - int to show result
+   * @throws IOException - if ioexception is found
+   */
   public int addPhoneCall(String customer, String caller, String callee, String startdate, String starttime, String startampm, String enddate, String endtime, String endampm) throws IOException {
     String start = startdate + " " + starttime + " " + startampm;
     String end = enddate + " " + endtime + " " + endampm;

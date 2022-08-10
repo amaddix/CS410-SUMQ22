@@ -23,7 +23,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
   /**
    * Dumps contents of a phonebill to text file
    * @param bill- to write to fill
-   * @throws IOException
+   * @throws IOException - if phone bill cant be parsed
    */
   @Override
   public void dump(PhoneBill bill) throws IOException {
@@ -56,7 +56,7 @@ public class PrettyPrinter implements PhoneBillDumper<PhoneBill> {
                   String stime = bill.getStartTime(i);
                   String stArray[] = stime.split(" ");
                   //System.out.println("what what " + stime + stArray[0]);
-                  if (stArray[1].matches("([0-9]|[012][0-9]):([0-6][0-9]|[0-9])$")) {
+                  if (stArray[1].matches("(0[1-9]|[012][0-9]):([0-6][0-9]|[0-9])$")) {
                     String sttime[] = stArray[1].split(":");
                     shourtomin = Integer.parseInt(sttime[0]);
                     shourtomin = shourtomin * 60; //convert hours to min

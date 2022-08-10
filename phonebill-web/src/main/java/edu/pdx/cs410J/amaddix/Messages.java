@@ -6,6 +6,12 @@ package edu.pdx.cs410J.amaddix;
  */
 public class Messages
 {
+
+    /**
+     * MISSING REQUIRED PARAMETER -
+     * @param parameterName - PARAMETER PASSED TO DISPLAY
+     * @return string
+     */
     public static String missingRequiredParameter( String parameterName )
     {
         return String.format("The required parameter \"%s\" is missing", parameterName);
@@ -54,6 +60,16 @@ public class Messages
         return holder;
     }
 */
+
+    /**
+     * DEFINEDCALL - displays a phone call contents
+     * @param customer -string customer name
+     * @param caller - string phone number
+     * @param callee- string phone number
+     * @param start -string start date
+     * @param end-string end date
+     * @return -string with message
+     */
     public static String definedCall(String customer, String caller, String callee, String start, String end){
         return String.format("%s\n%s\n%s\n%s\n%s\n", customer, caller, callee, start, end);
     }

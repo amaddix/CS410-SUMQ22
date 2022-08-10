@@ -12,8 +12,7 @@ public class TextParser implements PhoneBillParser<PhoneBill> {
 
   /**
    * constructor initializing:
-   *
-   * @param reader
+   * @param reader -reader type
    */
   public TextParser(Reader reader) {
     this.reader = reader;

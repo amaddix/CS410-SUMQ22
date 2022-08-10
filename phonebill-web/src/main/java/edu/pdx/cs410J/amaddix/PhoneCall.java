@@ -21,6 +21,10 @@ public class PhoneCall extends AbstractPhoneCall {
     private String startTime;
     private String endTime;
 
+    /**
+     * PHONE CALL CONSTRUCTOR
+     * initializing all variables to null
+     */
 
     //base constructor
     public PhoneCall(){
@@ -32,11 +36,12 @@ public class PhoneCall extends AbstractPhoneCall {
     }
 
     /**
-     * constructor initializing :
-     * @param tcaller
-     * @param tcallee
-     * @param tstartTime
-     * @param tendTime
+     * PHONECALL CONSTRUCTOR  *  initializing :
+     * @param tcustomer - string customer time
+     * @param tcaller - string with phone number
+     * @param tcallee - string with phone number
+     * @param tstartTime -string with date time (MM/DD/YYYY hh:mm a)
+     * @param tendTime-string with date time (MM/DD/YYYY hh:mm a)
      */
 
     //constructor with caller and callee
@@ -49,8 +54,8 @@ public class PhoneCall extends AbstractPhoneCall {
     }
 
     /**
-     * constructor copying a phone call
-     * @param tempcall
+     * PHONE CALL CONSTRUCTOR     *  copying a phone call
+     * @param tempcall - phone call object
      */
 
     //constructor with 2 string num
@@ -74,14 +79,18 @@ public class PhoneCall extends AbstractPhoneCall {
 
    */
 
+    /**
+     *GETCUSTOMER
+     * @return string with customer name
+     */
 
     public String getCustomer(){
         return this.customer;
     }
 
     /**
-     *  * GET CALLER
-     * @return caller- String with phonecall end time
+     ** GET CALLER
+     * @return caller-String with phonecall end time
      */
     @Override
     public String getCaller() {
@@ -91,13 +100,24 @@ public class PhoneCall extends AbstractPhoneCall {
 
     /**
      * GET CALLEE -
-     *
      * @return callee - String with phonecall end time
      */
     @Override
     public String getCallee() {
         return this.callee;
         //return "This method is not implemented yet";
+    }
+
+    public String returnSdate(){
+        return this.startTime;
+    }
+
+    /**
+     * RETURNEDATE
+     * @return - returns true phone bill end date
+     */
+    public String returnEdate(){
+        return this.endTime;
     }
 
     /**
@@ -112,6 +132,7 @@ public class PhoneCall extends AbstractPhoneCall {
                     return this.startTime;
                 }
                 String tname= this.startTime;
+                //System.out.println("testing 16 = " + tname);
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
                 Date ttime = sdf.parse(tname);
                 //Date ttime = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.ENGLISH).parse(this.startTime);
@@ -141,7 +162,6 @@ public class PhoneCall extends AbstractPhoneCall {
                 if(this.endTime.matches("^([1-9]|1[0-2])/([1-9]|[12][0-9]|3[01])/22, ([1-9]|[12][0-9]):([1-9]|[1-6][0-9]) ([A][M]|[P][M])$")){
                     return this.endTime;
                 }
-
 
                 String tname= this.endTime;
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm a");

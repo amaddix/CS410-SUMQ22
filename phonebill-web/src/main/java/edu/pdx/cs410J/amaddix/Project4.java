@@ -203,7 +203,7 @@ public class Project4 {
 
     /**
      * Takes a string that should be a customer phone number, and verifies that it matches that format.
-     * @param phoneNumber
+     * @param phoneNumber - a string that hold a phone number
      * @return true if string matches phone number, false otherwise
      */
     @VisibleForTesting
@@ -216,6 +216,11 @@ public class Project4 {
         }
     }
 
+    /**
+     * READMEMESSAGE-
+     * @param readme-boolean to tell if user wants to show read me
+     * @return
+     */
     static public int readmeMessage(Boolean readme){
 
       if(readme){
@@ -238,6 +243,7 @@ public class Project4 {
     ///////////////////////////////////
 
     /**
+     *
      * Makes sure that the give response has the expected HTTP status code
      * @param code The expected status code
      * @param response The response from the server
@@ -263,6 +269,7 @@ public class Project4 {
     }
 */
     /**
+     * USAGE -
      * Prints usage information for this program and exits
      * @param message An error message to print
      */

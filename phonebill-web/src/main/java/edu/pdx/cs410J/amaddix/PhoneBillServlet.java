@@ -37,6 +37,9 @@ public class PhoneBillServlet extends HttpServlet
      * word specified in the "CUSTOMER" HTTP parameter to the HTTP response.  If the
      * "CUSTOMER" parameter is not specified, all of the entries in the dictionary
      * are written to the HTTP response.
+     * @param request - HttpServletRequest request passed to function
+     * @param response - HttpServletResponse response code
+     * @throws IOException if io exception is found
      */
     @Override
     protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws IOException {
@@ -63,23 +66,37 @@ public class PhoneBillServlet extends HttpServlet
         }
     }
 
+    /**
+     * GETSEARCH- on get request with a customer name, start time and end time, function displays all calls between the
+     * given time in the phone bill matching the given name
+     * @param customer - string with customer name
+     * @param start - string with start time
+     * @param end -string with end time
+     * @param response - HttpServletResponse with response found
+     * @throws IOException - if found io exception
+     * @throws ParseException - if found parser exception
+     */
     public void getSearch(String customer, String start, String end,  HttpServletResponse response) throws IOException, ParseException {
         PrintWriter pw = response.getWriter();
         SimpleDateFormat format1 = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
-        SimpleDateFormat format2 = new SimpleDateFormat("M/d/yy, h:mm a");
+        //SimpleDateFormat format2 = new SimpleDateFormat("M/d/yy, h:mm a");
         Date tstarttime = format1.parse(start);
         Date tendtime = format1.parse(end);
         PhoneBill bill1 = phoneBillMap.get(customer);
         PhoneBill tempBill = null;
 
         if (bill1 != null) {
+            if(bill1.getCallNum() == 0){
+                System.err.println("No phonecalls saved in "+tbill.getCustomer()+"'s phone bill");
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
             for(int i=0; i<bill1.getCallNum(); i++){
-                Date tempStart = format2.parse(bill1.getStartTime(i));
-                Date tempEnd = format2.parse(bill1.getEndTime(i));
+                Date tempStart = format1.parse(bill1.returnSdate(i));
+                Date tempEnd = format1.parse(bill1.returnEdate(i));
 
-                System.out.println((tempStart.compareTo(tstarttime)));
+              //  System.out.println((tempStart.compareTo(tstarttime)));
                 if((tempStart.compareTo(tstarttime) >= 0 )  && (tempEnd.compareTo(tendtime) <=0) ) {
-                    PhoneCall tcall = new PhoneCall(customer, bill1.getCaller(i), bill1.getCallee(i), bill1.getStartTime(i), bill1.getEndTime(i));
+                    PhoneCall tcall = new PhoneCall(customer, bill1.getCaller(i), bill1.getCallee(i), bill1.returnSdate(i), bill1.returnEdate(i));
 
                     if(tempBill == null){
                         tempBill = new PhoneBill(tcall);
@@ -98,8 +115,20 @@ public class PhoneBillServlet extends HttpServlet
             response.setStatus(HttpServletResponse.SC_OK);
 
             }
+        else{
+            System.err.println("No Bill matching found");
+            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
         }
 
+    /**
+     * GETBILL - upon request with a customer name, if a phone bill in phone bill map matches given name, display all contents
+     * of that bill
+     * @param name- string with customer name
+     * @param bill1 - phone bill with phonebill matching customer name
+     * @param response - HttpServletResponse with response code from function
+     * @throws IOException - if an ioexception is found
+     */
     public void getBill(String name, PhoneBill bill1, HttpServletResponse response) throws IOException {
 
         if (bill1 == null) {
@@ -108,6 +137,7 @@ public class PhoneBillServlet extends HttpServlet
             PrintWriter pw = response.getWriter();
             PrettyPrinter dumper = new PrettyPrinter(pw);
             dumper.dump(bill1);
+
             pw.println(bill1.display());
             pw.flush();
             response.setStatus(HttpServletResponse.SC_OK);
@@ -119,6 +149,10 @@ public class PhoneBillServlet extends HttpServlet
     /**
      * Handles an HTTP POST request by storing the phonebill request parameters.  It writes the dictionary
      * entry to the HTTP response.
+     *
+     * @param request -HttpServletRequest request
+     * @param response - HttpServeltResponse response code
+     * @throws IOException - if found io exception
      */
     @Override
     protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws IOException {
@@ -150,7 +184,7 @@ public class PhoneBillServlet extends HttpServlet
 
         String end = getParameter(END_PARAMETER, request);
         if (end == null) {
-            missingRequiredParameter(response, "startTime");
+            missingRequiredParameter(response, "endTime");
             return;
         }
 
@@ -196,8 +230,10 @@ public class PhoneBillServlet extends HttpServlet
 
     /**
      * Writes an error message about a missing parameter to the HTTP response.
-     *
      * The text of the error message is created by {@link Messages#missingRequiredParameter(String)}
+     * @param response - HttpServletResponse with response code
+     * @param parameterName - string with parameter
+     * @throws IOException if io exception is found
      */
     private void missingRequiredParameter( HttpServletResponse response, String parameterName )
         throws IOException
@@ -206,57 +242,10 @@ public class PhoneBillServlet extends HttpServlet
         response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, message);
     }
 
-    /**
-     * Writes the definition of the given word to the HTTP response.
-     *
-     * The text of the message is formatted with {@link TextDumper}
-     */
-
-    /*
-    private void writeDefinition(String customer, HttpServletResponse response) throws IOException {
-        PhoneBill tempBill = this.phoneBillMap.get(customer);
-
-        if (tempBill == null) {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-
-        } else {
-            PrintWriter pw = response.getWriter();
-
-           // PhoneBill newBill= new PhoneBill(tempBill);
-           // Map<String, PhoneBill> newBill = Map.of(customer, tempBill);
-            PrettyPrinter dumper = new PrettyPrinter(pw);
-            dumper.dump(tempBill);
-
-            response.setStatus(HttpServletResponse.SC_OK);
-        }
-    }
-
-*/
-
-    /**
-     * Writes all of the dictionary entries to the HTTP response.
-     *
-     * The text of the message is formatted with {@link TextDumper}
-     */
-/*
-    private void writeAllDictionaryEntries(HttpServletResponse response ) throws IOException
-    {
-        for(PhoneBill billinfo : phoneBillMap.values()) {
-            PrintWriter pw = response.getWriter();
-            PrettyPrinter dumper = new PrettyPrinter(pw);
-            //TextDumper dumper = new TextDumper(pw);
-            dumper.dump(billinfo);
-        }
-
-        response.setStatus( HttpServletResponse.SC_OK );
-    }
-
- */
-////////
 
     /**
      * Returns the value of the HTTP request parameter with the given name.
-     *
+
      * @return <code>null</code> if the value of the parameter is
      *         <code>null</code> or is the empty string
      */

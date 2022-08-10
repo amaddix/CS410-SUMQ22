@@ -24,6 +24,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     //constructor with customer name, create empty array for call list
 
     /**
+     * PHONEBILL
      * base constructor
      */
 
@@ -35,8 +36,9 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * PHONE BILL
      * constructor initializing with only customer
-     * @param customer -string
+     * @param customer -string with customer name
      */
 
     public PhoneBill(String customer) {
@@ -48,11 +50,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
 
     /**
      * constructor initializing with all variables in a phone bill
-     * @param customer -string
-     * @param caller - string
-     * @param callee - string
-     * @param tstart -string
-     * @param tend -string
+     * @param customer -string customer name
+     * @param caller - string phone number
+     * @param callee - string phone number
+     * @param tstart -string start time of call
+     * @param tend -string endtime of call
      */
     //customer name, single call log (call list =1)
     public PhoneBill (String customer, String caller, String callee, String tstart, String tend){
@@ -66,6 +68,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
         // this.callNum = 1;
 
     }
+
+    /**
+     * PHONEBILL CONSTRUCTOR
+     * @param tcall -phonecall type
+     */
     public PhoneBill(PhoneCall tcall){
         this.customer = tcall.getCustomer();
         if(this.call == null){
@@ -77,6 +84,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
             this.callNum = this.callNum + 1;
         }
     }
+
+    /**
+     * PHONEBILL CONSTRUCTOR
+     * @param tbill - phonebill type
+     */
 
     public PhoneBill(PhoneBill tbill){
         String tcaller = tbill.getCaller(callNum);
@@ -106,6 +118,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
   }
 */
     /**
+     * GETCALLER
      * @param item int
      * @return the caller string
      */
@@ -118,6 +131,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * GETCALLEE
      * @param item int
      * @return the callee string
      */
@@ -129,6 +143,31 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * RETURNSDATE
+     * @param i - int
+     * @return start time
+     */
+    public String returnSdate(int i){
+        if(this.call[i] == null){
+            return null;
+        }
+        return this.call[i].returnSdate();
+    }
+
+    /**
+     * RETURNEDATE
+     * @param i -int
+     * @return - end date
+     */
+    public String returnEdate(int i){
+        if(this.call[i] == null){
+            return null;
+        }
+        return this.call[i].returnEdate();
+    }
+
+    /**
+     * GET START TIME
      * @param item int
      * @return starttime string
      */
@@ -140,6 +179,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * GETENDTIME
      * @param item int
      * @return endtime string
      */
@@ -151,6 +191,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * GETCUSTOMER
      * @return customer name string
      */
 
@@ -161,6 +202,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * GETCALL NUMBER
      * @return int w number of calls a bill has
      */
     public int getCallNum(){
@@ -168,33 +210,40 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * DISPLAY
      * @return int - to show programs working correctly
      */
 
-    public int display() {
+    public String display() {
         String tname = this.getCustomer();
         int index = 0;
         if (this.getCaller(index) != null) {
-            System.out.println("Customer  :   " + tname);
+           // System.out.println("Customer  :   " + tname);
+            String info = tname + "\n";
             while(index < this.callNum) {
 
                 String tcaller = this.getCaller(index);
                 String tcallee = this.getCallee(index);
-                String tStart = this.getStartTime(index);
-                String tend = this.getEndTime(index);
+                String tStart = this.returnSdate(index);
+                String tend = this.returnEdate(index);
                 ///
-                System.out.println("Caller : " + tcaller + "    Callee :  " + tcallee);
-                System.out.println(tStart + " - " + tend);
+                //System.out.println("Caller : " + tcaller + "    Callee :  " + tcallee);
+                //System.out.println(tStart + " - " + tend);
+                info = info + tcaller+"\n"+tcallee+"\n"+tStart+"\n"+tend+"\n";
                 index= index+1;
 
             }
-            return 1;
+
+            System.out.println(info);
+
+            return info;
         }
-        return 0;
+        return null;
     }
     /**
+     * ADDPHONECALL
      * adds phone call the phone bill list
-     * @param temp_call
+     * @param temp_call - phonecall type
      */
 
     @Override
@@ -209,6 +258,7 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
     }
 
     /**
+     * SORTED
      * sorts phone call in a phone call list
      */
 
@@ -302,6 +352,11 @@ public class PhoneBill extends AbstractPhoneBill<PhoneCall> {
         }
       }
     */
+
+    /**
+     * GETPHONECALLS
+     * @return null
+     */
     @Override
     public Collection<PhoneCall> getPhoneCalls() {
         return null;

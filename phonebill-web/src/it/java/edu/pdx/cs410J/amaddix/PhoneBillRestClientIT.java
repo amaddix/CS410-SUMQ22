@@ -40,7 +40,7 @@ class PhoneBillRestClientIT {
         String enddate = "04/28/2022";
         String endtime = "01:45";
         String endampm = "am";
-        client.addPhoneCall(customer, caller, callee, startdate, starttime, startampm, enddate, endtime, endtime);
+        client.addPhoneCall(customer, caller, callee, startdate, starttime, startampm, enddate, endtime, endampm);
 
         assertThat(client.getBill(customer), equalTo(1));
         assertThat(client.getSearch(customer, "04/25/2022 10:10 am", "04/30/2022 10:10 am"), equalTo(1));
